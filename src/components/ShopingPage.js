@@ -82,7 +82,7 @@ export class ShopingPage extends React.Component {
 
             <hr></hr>
             <Button
-              style={{ position: "absolute", left: 150 }}
+              style={{ position: "absolute", left: 250 }}
               variant="outlined"
               onClick={(e) => this.handleClick(localList)}
             >

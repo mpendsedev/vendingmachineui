@@ -8,7 +8,7 @@ import './css/home.css'
 
 function App() {
   return (
-    <div className="App" id='main'>
+    <div className="App">
       <VmNavbar />
     </div>
   );
