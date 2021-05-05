@@ -33,13 +33,11 @@ export class ShopingPage extends React.Component {
     // console.log(localList);
     let totalCost = 0;
     const selected = Object.keys(localList).map((key, value) => {
-      totalCost = totalCost + parseInt(localList[key]['age'])
+      totalCost = totalCost + parseInt(localList[key]["age"]);
       return localList[key];
     });
-    alert(totalCost)
+    alert(totalCost);
     console.log(selected);
-
-
   }
 
   render() {
@@ -59,6 +57,9 @@ export class ShopingPage extends React.Component {
             alignItems: "center",
           }}
         >
+          <h1>
+            Shoping List Page
+          </h1>
           <div style={{ height: 400, width: "60%" }}>
             <DataGrid
               rows={rows}

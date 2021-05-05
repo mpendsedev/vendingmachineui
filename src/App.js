@@ -1,13 +1,15 @@
 //import other files
 
 import { VmNavbar } from "./components/Navbar";
-import { ShopingPage } from "./components/ShopingPage";
+
+//css
+
+import './css/home.css'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id='main'>
       <VmNavbar />
-      <ShopingPage />
     </div>
   );
 }
