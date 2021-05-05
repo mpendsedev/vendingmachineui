@@ -5,7 +5,7 @@ import { Button } from "@material-ui/core";
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "firstName", headerName: "Item name", width: 130 },
-  { field: "lastName", headerName: "Price", width: 130 },
+  { field: "age", headerName: "Price", width: 130 },
 ];
 
 const rows = [
@@ -24,65 +24,82 @@ export class ShopingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataArray :[]
-    }
-  } 
+      list: [],
+    };
+  }
+
+  handleClick(localList) {
+    console.log("clicked");
+    // console.log(localList);
+    let totalCost = 0;
+    const selected = Object.keys(localList).map((key, value) => {
+      totalCost = totalCost + parseInt(localList[key]['age'])
+      return localList[key];
+    });
+    alert(totalCost)
+    console.log(selected);
+
+
+  }
 
   render() {
-    // let dataArray = []
-    
+    let localList = {};
+
     return (
       <div>
-      <div
-        style={{
-          // backgroundColor: 'blue',
-          position: "absolute",
-          top: 100,
-          left: 425,
-          right: 0,
-          bottom: 0,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ height: 400, width: "60%" }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
+        <div
+          style={{
+            // backgroundColor: 'blue',
+            position: "absolute",
+            top: 100,
+            left: 425,
+            right: 0,
+            bottom: 0,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ height: 400, width: "60%" }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={5}
               checkboxSelection
               onRowSelected={(x) => {
-                this.setState({dataArray: x.api.current.getSelectedRows()})
+                //
                 // dataArray = x.api.current.getSelectedRows();
-                console.log(x.api.current.getSelectedRows())
-                
+                let isSelected = x.isSelected;
+                // console.log(x)
+                if (isSelected) {
+                  localList[x["data"]["id"]] = x["data"];
+                } else {
+                  delete localList[x["data"]["id"]];
+                }
+                console.log(localList);
               }}
-         
-          />
+            />
 
-          <hr></hr>
-          <Button
-            style={{ position: "absolute", left: 150 }}
-            variant="outlined"
-          >
-            Buy
-          </Button>
+            <hr></hr>
+            <Button
+              style={{ position: "absolute", left: 150 }}
+              variant="outlined"
+              onClick={(e) => this.handleClick(localList)}
+            >
+              Buy
+            </Button>
 
-          <Button
+            {this.state.list}
+            {/* <Button
             style={{ position: "absolute", left: 250 }}
             variant="outlined"
             color="secondary"
           >
             Reset
           </Button>
-            <hr />
-            <hr />
-
-            ****************************
-            {/* {this.state} */}
+     */}
+          </div>
         </div>
-        </div>
-        </div>
+      </div>
     );
   }
 }

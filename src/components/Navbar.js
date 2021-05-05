@@ -17,7 +17,7 @@ export class VmNavbar extends React.Component {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link to="/home">Home</Nav.Link>
-            <Nav.Link to="/link">Admin Page</Nav.Link>
+            <Nav.Link to="/link">List of requst</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
