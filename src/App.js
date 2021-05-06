@@ -4,7 +4,7 @@ import { VmNavbar } from "./components/Navbar";
 
 //css
 
-import './css/home.css'
+import "./css/home.css";
 
 function App() {
   return (

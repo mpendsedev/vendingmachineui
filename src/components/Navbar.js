@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //css
-import '../css/navbar.css'
+import "../css/navbar.css";
 
 //user components
 
@@ -19,14 +19,18 @@ export class VmNavbar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar expand="lg" variant="dark" className='navhead'>
-          <Navbar className='htitle'>Vending Machine</Navbar>
+        <Navbar expand="lg" variant="dark" className="navhead">
+          <Navbar className="htitle">Vending Machine</Navbar>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Router>
               <Nav className="mr-auto">
-                <Link to="/ShopingPage" className='hclick'>Home</Link>
-                <Link to="/list" className='hclick' >Requsts</Link>
+                <Link to="/ShopingPage" className="hclick">
+                  Home
+                </Link>
+                <Link to="/list" className="hclick">
+                  Requsts
+                </Link>
               </Nav>
 
               <Switch>

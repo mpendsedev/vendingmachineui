@@ -1,8 +1,11 @@
 // import { render } from '@testing-library/react';
 import React from "react";
 import { Button } from "@material-ui/core";
+
 //css
-import '../css/listPage.css'
+import "../css/listPage.css";
+
+const axios = require("axios");
 
 const rows = [
   { id: 1, itemName: "Snow", firstName: "Jon", price: 35 },
@@ -17,18 +20,42 @@ const rows = [
 ];
 
 export class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: rows,
-    };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     data: rows,
+  //   };
+  // }
+  state = {
+    data: rows,
+  };
+
+  componentDidMount() {
+    var tempArray = [];
+
+    axios.get("http://localhost:3003/api/listprintall").then((response) => {
+      console.log(response["data"]);
+
+      tempArray = response["data"].map((value, key) => {
+        return value;
+      });
+      console.log(tempArray);
+
+      this.setState({
+        data: tempArray,
+      });
+    });
   }
 
   handleClick(localList) {
-    console.log("cleaned");
-    this.setState({
-      data:[]
-    })
+    axios.get("http://localhost:3003/api/removeall").then((response) => {
+      console.log(response);
+      console.log("cleaned");
+      this.setState({
+        data: [],
+      });
+      alert("list in clear and money will refund");
+    });
   }
 
   render() {
@@ -41,35 +68,32 @@ export class List extends React.Component {
           left: 425,
           // right: 200,
           bottom: 0,
-          width:"40%"
+          width: "40%",
           // justifyContent: "center",
           // alignItems: "center",
         }}
       >
         <h1>Vending Machine request List</h1>
 
-        <table  id="customers">
+        <table id="customers">
           <thead>
-          <tr>
-            <th>Id </th>
-            <th>Item Name</th>
-            <th>Price</th>
+            <tr>
+              <th>Id </th>
+              <th>Item Name</th>
+              <th>Price</th>
             </tr>
-            </thead>
+          </thead>
           <tbody>
-          
-          {this.state.data.map((value,key) => {
-     
-            return (
-              <tr>
-                <td>{value.id}</td>
-                <td>{value.itemName}</td>
-                <td>{value.price}</td>
-              </tr>
-            )
-            
-          })}
-            
+            {this.state.data.map((value, key) => {
+              return (
+                <tr>
+                  <td>{value.id}</td>
+                  <td>{value.name}</td>
+                  <td>{value.price}</td>
+                </tr>
+              );
+            })}
+
             <hr></hr>
             <Button
               style={{ position: "absolute", left: 150 }}
@@ -78,8 +102,7 @@ export class List extends React.Component {
             >
               Clear All & refund
             </Button>
-          
-            </tbody>
+          </tbody>
         </table>
       </div>
     );

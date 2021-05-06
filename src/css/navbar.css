@@ -1,19 +1,17 @@
-.navhead{
-    background-color: Tomato;
-   }
-
-.htitle{
-    color: black;
-    text-decoration: none;
-    letter-spacing: 2px;
-    font-weight: bold;    
-    font-family: "Lucida Console", "Courier New", monospace;
-
+.navhead {
+  background-color: Tomato;
 }
 
-.hclick
-{
-    color: black;
-    margin-left: 40px;
-    text-decoration: none;
+.htitle {
+  color: black;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.hclick {
+  color: black;
+  margin-left: 40px;
+  text-decoration: none;
 }
